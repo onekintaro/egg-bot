@@ -20,7 +20,7 @@ const guildSchema = Schema({
 	// 0 = no announcement, 1 = reply, 2 = choosen channel
 	LevelOption: { type: Number, default: 1 },
 	LevelChannel: { type: String },
-	LevelMessage: { type: String, default: 'GG {user}, you have leveled up to {level}!' },
+	LevelMessage: { type: String, default: 'Gratuliere {user}, du hast gerade Level {level} erreicht!' },
 	LevelIgnoreRoles: { type: Array },
 	LevelIgnoreChannel: { type: Array },
 	LevelMultiplier: { type: Number, default: 1 },
@@ -29,9 +29,9 @@ const guildSchema = Schema({
 	MusicDJ: { type: Boolean, default: false },
 	MusicDJRole: { type: String },
 	// logging plugin
-	ModLog: { type: Boolean, default: false },
+	ModLog: { type: Boolean, default: true },
 	ModLogEvents: { type: Array },
-	ModLogChannel: { type: String },
+	ModLogChannel: { type: String, default: '1027229048478375946' },
 	ModLogIgnoreBot: { type: Boolean, default: true },
 	ModLogIgnoreChannel: { type: Array },
 	// CommandCooldown
@@ -50,8 +50,8 @@ const guildSchema = Schema({
 	TicketSupportRole: { type: String },
 	TicketCategory: { type: String },
 	// language
-	Language: { type: String, default: 'en-US' },
-	plugins: { type: Array, default: ['Fun', 'Giveaway', 'Guild', 'Image', 'Misc', 'Moderation', 'Music', 'NSFW', 'Plugins', 'Searcher', 'Ticket'] },
+	Language: { type: String, default: 'de-DE' },
+	plugins: { type: Array, default: ['Fun', 'Giveaway', 'Guild', 'Image', 'Misc', 'Moderation', 'NSFW', 'Plugins', 'Ticket'] },
 	version: { type: Number, default: '1.2' },
 });
 

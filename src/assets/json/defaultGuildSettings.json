@@ -1,9 +1,9 @@
 {
-  "prefix": "e!",
-  "Language": "en-US",
-  "plugins": ["Fun", "Guild", "Image", "Level", "Misc", "Moderation", "Music", "NSFW", "Plugins", "Searcher"],
+  "prefix": "!",
+  "Language": "de-DE",
+  "plugins": ["Fun", "Guild", "Image", "Level", "Misc", "Moderation", "NSFW", "Plugins"],
   "LevelOption": 1,
-  "LevelMessage": "GG {user}, you have leveled up to {level}!",
+  "LevelMessage": "Gratuliere {user}, du hast gerade Level {level} erreicht!",
   "LevelMultiplier": 1,
   "LevelPublicBoard": true,
   "LevelJoinViaBoard": false,
@@ -13,8 +13,8 @@
       "option": 1,
       "list": ["badword"],
       "filter": "levDev",
-      "IgnoreChannel": ["761612724370931722"],
-      "IgnoreRole": ["766029837017153576"]
+      "IgnoreChannel": [""],
+      "IgnoreRole": [""]
     }
   }
 }

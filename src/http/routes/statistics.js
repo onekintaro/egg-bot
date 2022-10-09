@@ -18,10 +18,10 @@ module.exports = (bot) => {
 			MessagesSeen: bot.messagesSent,
 			CommandsRan: bot.commandsUsed,
 			ping: Math.round(bot.ws.ping),
-			Lavalink: bot.manager.nodes.map(node => ({
-				name: node.options.identifier,
-				stats: node.stats,
-			})),
+			// Lavalink: bot.manager.nodes.map(node => ({
+			// 	name: node.options.identifier,
+			// 	stats: node.stats,
+			// })),
 		});
 	});
 

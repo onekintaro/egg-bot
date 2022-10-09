@@ -4,7 +4,7 @@ const { ActivityType, Client, Collection, GatewayIntentBits: FLAGS, Partials, Pe
 	GiveawaysManager = require('./Giveaway-Manager'),
 	path = require('path'),
 	{ promisify } = require('util'),
-	AudioManager = require('./Audio-Manager'),
+	// AudioManager = require('./Audio-Manager'),
 	Reddit = require('../APIs/reddit.js'),
 	readdir = promisify(require('fs').readdir);
 
@@ -22,9 +22,9 @@ class Egglord extends Client {
 			presence: {
 				status: 'online',
 				activities: [{
-					name: 'my mention',
-					type: ActivityType.Listening,
-					url: 'https://www.twitch.tv/ram5s5',
+					name: 'My Code beacuse not finished yet!',
+					type: ActivityType.Playing,
+					url: 'http://pokegang.ch',
 				}],
 			},
 		});
@@ -137,7 +137,7 @@ class Egglord extends Client {
 		 * The Audio manager
 		 * @type {Class}
 		*/
-		this.manager = new AudioManager(this);
+		// this.manager = new AudioManager(this);
 
 		this.reddit = new Reddit();
 	}

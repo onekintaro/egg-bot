@@ -11,7 +11,7 @@ module.exports = async bot => {
 
 	// IP logger
 	app.use(function(req, res, next) {
-		if (req.originalUrl !== '/favicon.ico' || bot.config.debug) {
+		if (req.originalUrl !== '/favicon.png' || bot.config.debug) {
 			bot.logger.log(`IP: ${req.connection.remoteAddress.slice(7)} -> ${req.originalUrl}`);
 		}
 		next();
