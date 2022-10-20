@@ -28,6 +28,11 @@ class ClickButton extends Event {
 			guild = bot.guilds.cache.get(guildId),
 			channel = bot.channels.cache.get(channelId);
 
+		switch (ID) {
+			case 'switch':
+				console.log(button);
+				return bot.emit('switchAdd', button);
+		}
 		// buttons are only used for ticket embed (for now)
 		if (ID == 'crt_ticket') {
 			// Make sure user isn't on cooldown from making a ticket
@@ -94,6 +99,16 @@ class ClickButton extends Event {
 
 			cooldowns.set(member.user.id, now);
 			setTimeout(() => cooldowns.delete(member.user.id), cooldownAmount);
+		}
+	}
+
+	async checkUser(user1, button) {
+		if(user1 === button.user.id) {
+			button.reply({ content: 'Access Test OK' });
+			return true;
+		} else {
+			button.reply({ content: 'Access Test FAIL' });
+			return false;
 		}
 	}
 }

@@ -1,0 +1,40 @@
+{
+    // Verwendet IntelliSense zum Ermitteln möglicher Attribute.
+    // Zeigen Sie auf vorhandene Attribute, um die zugehörigen Beschreibungen anzuzeigen.
+    // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Node",
+            "program": "${workspaceFolder}/.",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**",
+                "**/node_modules/**",
+                "**/.node/corepack/yarn/**",
+                "**/$KNOWN_TOOLS$/**",
+                "!**/node_modules/discord.js/**",
+                "!**/node_modules/@discordjs/**",
+            ],
+            "type": "node"
+        },
+
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "yarn",
+            "runtimeExecutable": "yarn",
+            "runtimeArgs": ["start"],
+            "skipFiles": [
+                "<node_internals>/**",
+                "**/node_modules/**",
+                "**/.node/corepack/yarn/**",
+                "**/$KNOWN_TOOLS$/**",
+                "!**/node_modules/discord.js/**",
+                "!**/node_modules/@discordjs/**",
+            ],
+            "program": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}",
+        }
+    ]
+}

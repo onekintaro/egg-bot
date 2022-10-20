@@ -20,6 +20,7 @@ class Ready extends Event {
 	 * @readonly
 	*/
 	async run(bot) {
+		//console.log(bot.user);
 		// Load up audio player
 		// try {
 		// 	bot.manager.init(bot.user.id);
@@ -42,6 +43,7 @@ class Ready extends Event {
 		for (const guild of [...bot.guilds.cache.values()]) {
 			// Sort out guild settings
 			await guild.fetchSettings();
+			// console.log(await guild.fetchSettings());
 			if (guild.settings == null) return bot.emit('guildCreate', guild);
 			if (guild.settings.plugins.includes('Level')) await guild.fetchLevels();
 

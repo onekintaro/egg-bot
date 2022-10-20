@@ -1,0 +1,122 @@
+[
+    {
+        "typ": "normal",
+        "name": "Normal",
+        "id": 1,
+        "search": ["normal", "normal", "<:typenormal:1028549304178200577>"]
+    },
+    {
+        "typ": "fighting",
+        "name": "Kampf",
+        "id": 2,
+        "search": ["fighting", "kampf", "<:typefighting:1029462780161560697>"]
+    },
+    {
+        "typ": "flying",
+        "name": "Flug",
+        "id": 3,
+        "search": ["flying", "flug", "<:typeflying:1028549296393564226>"]
+    },
+    {
+        "typ": "poison",
+        "name": "Gift",
+        "id": 4,
+        "search": ["poison", "gift", "<:typepoison:1028549305503580223>"]
+    },
+    {
+        "typ": "ground",
+        "name": "Boden",
+        "id": 5,
+        "search": ["ground", "boden", "<:typeground:1028549301649035264>"]
+    },
+    {
+        "typ": "rock",
+        "name": "Gestein",
+        "id": 6,
+        "search": ["rock", "stein", "gestein", "<:typerock:1028549308712235048>"]
+    },
+    {
+        "typ": "bug",
+        "name": "Käfer",
+        "id": 7,
+        "search": ["bug", "käfer", "<:typebug:1028549287543582740>"]
+    },
+    {
+        "typ": "ghost",
+        "name": "Geist",
+        "id": 8,
+        "search": ["ghost", "geist", "<:typeghost:1028549297853169714>"]
+    },
+    {
+        "typ": "steel",
+        "name": "Stahl",
+        "id": 9,
+        "search": ["steel", "stahl", "<:typesteel:1028549311669215232>"]
+    },
+    {
+        "typ": "fire",
+        "name": "Feuer",
+        "id": 10,
+        "search": ["feuer", "fire", "<:typefire:1028549295030407168>"]
+    },
+    {
+        "typ": "water",
+        "name": "Wasser",
+        "id": 11,
+        "search": ["water", "wasser", "<:typewater:1028549314559086613>"]
+    },
+    {
+        "typ": "grass",
+        "name": "Pflanze",
+        "id": 12,
+        "search": ["grass", "pflanze", "<:typegrass:1028549299476369448>"]
+    },
+    {
+        "typ": "electric",
+        "name": "Elektro",
+        "id": 13,
+        "search": ["electric", "elektro", "<:typeelectric:1028549291331043338>"]
+    },
+    {
+        "typ": "psychic",
+        "name": "Psycho",
+        "id": 14,
+        "search": ["psychic", "psycho", "<:typepsychic:1028549307235827772>"]
+    },
+    {
+        "typ": "ice",
+        "name": "Eis",
+        "id": 15,
+        "search": ["ice", "eis", "<:typeice:1028549302970232863>"]
+    },
+    {
+        "typ": "dragon",
+        "name": "Drache",
+        "id": 16,
+        "search": ["dragon", "drache", "<:typedragon:1028549290106290246>"]
+    },
+    {
+        "typ": "dark",
+        "name": "Unlicht",
+        "id": 17,
+        "search": ["dark", "unlicht", "<:typedark:1028549288797687808>"]
+    },
+    {
+        "typ": "fairy",
+        "name": "Fee",
+        "id": 18,
+        "search": ["fairy", "fee", "<:typefairy:1028549292476088401>"]
+    },
+    {
+        "typ": "unknown",
+        "name": "Unbekannt",
+        "id": 10001,
+        "search": ["unknown", "unbekannt", "<:typeunknown:1028549313057538118>"]
+    },
+    {
+        "typ": "shadow",
+        "name": "Crypto",
+        "id": 10002,
+        "search": ["shadow", "crypto", "<:typeshadow:1028549309756616835>"]
+    }
+]

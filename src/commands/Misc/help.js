@@ -88,13 +88,14 @@ class Help extends Command {
 				.sort((a, b) => a.category - b.category)
 				.forEach(category => {
 					const commands = bot.commands
-						.filter(c => c.help.category === category)
+						.filter(c => c.help.category === category && !bot.config.disabledHelpCommands.includes(c.help.name))
 						.sort((a, b) => a.help.name - b.help.name)
 						.map(c => `\`${c.help.name}\``).join('**, **');
 
 					const length = bot.commands
-						.filter(c => c.help.category === category).size;
+						.filter(c => c.help.category === category && !bot.config.disabledHelpCommands.includes(c.help.name)).size;
 					if (category == 'NSFW' && !channel.nsfw) return;
+					if (bot.config.disabledHelpPlugins.includes(category)) return;
 					embed.addFields({ name: `${category} [**${length}**]`, value: `${commands}.` });
 				});
 			// send message

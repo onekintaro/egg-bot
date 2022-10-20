@@ -1,0 +1,4 @@
+{
+    "DESCRIPTION": "Erhalte Informationen über ein Pokémon Typ.",
+    "USAGE": "type <typ>"
+  }

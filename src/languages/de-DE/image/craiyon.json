@@ -1,0 +1,6 @@
+{
+    "DESCRIPTION": "Creates a ai Image.",
+    "USAGE": "craiyon <text>",
+    "TITLE": "Generiertes Bild",
+    "INPUT": "Eingabe:"
+  }

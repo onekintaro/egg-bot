@@ -1,6 +1,8 @@
 // Dependencies
 const Client = require('./base/Egglord.js');
 require('./structures');
+const { reactionRolesConfig, reactionRolesChannel, enableReactionRoles } = require('./configs/roles-config');
+const { ReactionRole } = require('discordjs-reaction-role');
 
 const bot = new Client(),
 	{ promisify } = require('util'),
@@ -15,6 +17,8 @@ const bot = new Client(),
 	// load events
 	await loadEvents();
 
+	await loadReactionRoles();
+
 	// load translations
 	bot.translations = await require('./helpers/LanguageManager')();
 
@@ -22,7 +26,7 @@ const bot = new Client(),
 	bot.mongoose.init(bot);
 
 	// load up adult site block list
-	bot.fetchAdultSiteList();
+	// bot.fetchAdultSiteList();
 
 	// Connect bot to discord API
 	const token = bot.config.token;
@@ -65,7 +69,14 @@ async function loadEvents() {
 
 				// Make sure the right manager gets the event
 				if (event.conf.child) {
-					bot[event.conf.child].on(name, (...args) => event.run(bot, ...args));
+					if(name == 'rateLimited') {
+						// bot[event.conf.child].on(name, (...args) => event.run(bot, ...args));
+					} else {
+						bot[event.conf.child].on(name, (...args) => event.run(bot, ...args));
+					}
+
+				} else if(name == 'debugNewCmd') {
+					bot.on('ready', (...args) => event.run(bot, ...args));
 				} else {
 					bot.on(name, (...args) => event.run(bot, ...args));
 				}
@@ -75,6 +86,38 @@ async function loadEvents() {
 		});
 	});
 }
+
+async function loadReactionRoles() {
+	if(enableReactionRoles) {
+		bot.logger.log('=-=-=-=-=-=-=- Loading ReactionRoles -=-=-=-=-=-=-=');
+
+		try {
+			bot.on('ready', async () => {
+				const channel = await bot.channels.cache.get(reactionRolesChannel);
+				await reactionRolesConfig.forEach(element => {
+					channel.messages.fetch(element.messageId).then(msg => {
+						msg.react(element.reaction);
+					});
+				});
+			});
+
+
+		} catch (err) {
+			console.error(err);
+		}
+
+		const manager = new ReactionRole(bot, reactionRolesConfig);
+
+		// const destroy = () => {
+		// 	manager.teardown();
+		// };
+		// process.on('SIGINT', destroy);
+		// process.on('SIGTERM', destroy);
+	} else {
+		bot.logger.log('=-=-=-=-=-=-=- Skipping ReactionRoles -=-=-=-=-=-=-=');
+	}
+}
+
 
 // handle unhandledRejection errors
 process.on('unhandledRejection', err => {

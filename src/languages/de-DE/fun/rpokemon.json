@@ -1,0 +1,6 @@
+{
+    "DESCRIPTION": "Sendet zufälligen Post über Pokémon.",
+    "USAGE": "rpokemon",
+    "TITLE": "Aus /r/{{SUBREDDIT}}",
+    "FOOTER": "👍 {{UPVOTES}}   👎 {{DOWNVOTES}}"
+  }

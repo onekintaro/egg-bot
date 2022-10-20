@@ -30,7 +30,7 @@ class GiveawayEnded extends Event {
 			try {
 				const embed = new EmbedBuilder()
 					.setAuthor({ name: 'Giveaway winner', iconURL: member.user.displayAvatarURL() })
-					.setThumbnail(bot.guilds.cache.get(giveaway.guildId).iconURL())
+					.setThumbnail(bot.guild.cache.get(giveaway.guildId).iconURL())
 					.setDescription([
 						`Prize: \`${giveaway.prize}\`.`,
 						`Message link: [link](https://discord.com/channels/${giveaway.guildId}/${giveaway.channelId}/${giveaway.messageId}).`,

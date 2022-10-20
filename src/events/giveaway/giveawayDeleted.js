@@ -22,7 +22,7 @@ class GiveawayDeleted extends Event {
 	 * @readonly
 	*/
 	async run(bot, giveaway) {
-		if (bot.config.debug) bot.logger.debug(`Giveaway was deleted in ${giveaway.guild.id}.`);
+		if (bot.config.debug) bot.logger.debug(`Giveaway was deleted in ${giveaway.guildId}.`);
 	}
 }
 

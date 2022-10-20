@@ -1,0 +1,6 @@
+{
+    "DESCRIPTION": "Sendet ein zufälliges Pokémon Meme.",
+    "USAGE": "pokememe",
+    "TITLE": "Aus /r/{{SUBREDDIT}}",
+    "FOOTER": "👍 {{UPVOTES}}   👎 {{DOWNVOTES}}"
+  }

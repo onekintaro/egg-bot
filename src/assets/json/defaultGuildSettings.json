@@ -1,12 +1,10 @@
 {
   "prefix": "!",
   "Language": "de-DE",
-  "plugins": ["Fun", "Guild", "Image", "Level", "Misc", "Moderation", "NSFW", "Plugins"],
-  "LevelOption": 1,
-  "LevelMessage": "Gratuliere {user}, du hast gerade Level {level} erreicht!",
-  "LevelMultiplier": 1,
-  "LevelPublicBoard": true,
-  "LevelJoinViaBoard": false,
+  "plugins": ["Pokegang", "Fun", "Guild", "Giveaway", "Image", "Level", "Misc", "Moderation", "Plugins"],
+  "ModLog": false,
+  "ModLogChannel": "1031936723917217802",
+  "ModLogEvents": [],
   "Auto_Moderation": {
     "IgnoreBot": true,
     "Badwords": {

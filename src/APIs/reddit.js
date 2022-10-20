@@ -14,6 +14,18 @@ class RedditAPI {
 			'ComedyCemetery', 'comedyheaven', 'dankmemes', 'meme'];
 
 		/**
+		 * An array of 'meme' subreddits
+		 * @type {array}
+		*/
+		this.pokeMemeSubreddits = ['pokemonmemes', 'pokememes'];
+
+		/**
+		 * An array of 'meme' subreddits
+		 * @type {array}
+		*/
+		this.pokeSubreddits = ['pokemon'];
+
+		/**
 		 * ALlows for subreddit caching (No reddit API abuse)
 		 * @type {Collection}
 		*/
@@ -37,6 +49,33 @@ class RedditAPI {
 			return this._fetchPost(resp, options);
 		}
 	}
+
+	async fetchPokeMeme(options = {}) {
+		// choose a subreddit to get meme from
+		const subreddit = this.pokeMemeSubreddits[Math.floor(Math.random() * this.pokeMemeSubreddits.length)];
+		// check cache system before requesting reddit
+		if (this.cachedSubreddits.has(subreddit)) {
+			return this._fetchPost(this.cachedSubreddits.get(subreddit), options);
+		} else {
+			const resp = await fetch(`https://www.reddit.com/r/${subreddit}/hot.json`).then(res => res.json());
+			this._handleCache(subreddit, resp);
+			return this._fetchPost(resp, options);
+		}
+	}
+
+	async fetchRPokemon(options = {}) {
+		// choose a subreddit to get meme from
+		const subreddit = this.pokeSubreddits[Math.floor(Math.random() * this.pokeSubreddits.length)];
+		// check cache system before requesting reddit
+		if (this.cachedSubreddits.has(subreddit)) {
+			return this._fetchPost(this.cachedSubreddits.get(subreddit), options);
+		} else {
+			const resp = await fetch(`https://www.reddit.com/r/${subreddit}/hot.json`).then(res => res.json());
+			this._handleCache(subreddit, resp);
+			return this._fetchPost(resp, options);
+		}
+	}
+
 
 	/**
 	 * Function for fetching subreddit post from reddit
@@ -117,7 +156,7 @@ class RedditPost {
 		 * The image from the post
 		 * @type {string}
 		*/
-		this.imageURL = media ? media.oembed.thumbnail_url : url;
+		this.imageURL = media ? media.reddit_video.hls_url : url;
 
 		/**
 		 * The upvotes of the post

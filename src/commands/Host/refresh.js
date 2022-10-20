@@ -49,7 +49,6 @@ class Docs extends Command {
 					for (const plugin of enabledPlugins) {
 						const g = await bot.loadInteractionGroup(plugin, guild);
 						if (Array.isArray(g)) cmdsToUpload.push(...g);
-
 					}
 
 					// For the "Host" commands

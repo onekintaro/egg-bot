@@ -22,7 +22,7 @@ class Egglord extends Client {
 			presence: {
 				status: 'online',
 				activities: [{
-					name: 'My Code beacuse not finished yet!',
+					name: 'Pokegang.ch',
 					type: ActivityType.Playing,
 					url: 'http://pokegang.ch',
 				}],
@@ -168,7 +168,7 @@ class Egglord extends Client {
 		this.PresenceType = type;
 		try {
 			let j = 0;
-			setInterval(() => this.user.setActivity(`${this.Activity[j++ % this.Activity.length]}`, { type: type, url: 'https://www.twitch.tv/ram5s5' }), 10000);
+			setInterval(() => this.user.setActivity(`${this.Activity[j++ % this.Activity.length]}`, { type: type, url: 'https://www.pokegang.ch' }), 10000);
 		} catch (e) {
 			console.log(e);
 		}
@@ -299,6 +299,7 @@ class Egglord extends Client {
 	 * @readonly
 	*/
 	addEmbed(channelID, embed) {
+		// console.log(this.embedCollection);
 		// collect embeds
 		if (!this.embedCollection.has(channelID)) {
 			this.embedCollection.set(channelID, [embed]);

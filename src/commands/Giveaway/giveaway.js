@@ -1,6 +1,7 @@
 // Dependencies
 const { ApplicationCommandOptionType, PermissionsBitField: { Flags } } = require('discord.js'),
 	Command = require('../../structures/Command.js');
+const { EmbedBuilder } = require('discord.js');
 
 /**
  * Giveaway start command
@@ -30,6 +31,22 @@ class Giveaway extends Command {
 				options: c.conf.options,
 			})),
 		});
+	}
+
+	async run(bot, message, settings) {
+		// send 'waiting' message to show bot has recieved message
+		const msg = await message.channel.send(message.translate('misc:FETCHING', {
+			EMOJI: message.channel.checkPerm('USE_EXTERNAL_EMOJIS') ? bot.customEmojis['loading'] : '', ITEM: this.help.name }));
+
+		// Retrieve a random meme
+		const embed = new EmbedBuilder()
+			.setColor(0xFF0000)
+			.setTitle('ERROR!')
+			.setDescription('This Command needs to be run as Slash Command!')
+
+		// Send the meme to channel
+		msg.delete();
+		message.channel.send({ embeds: [embed] });
 	}
 
 	/**

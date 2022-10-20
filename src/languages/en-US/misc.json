@@ -3,6 +3,8 @@
 	"FETCHING": "{{EMOJI}} Fetching {{ITEM}}...",
 	"INCORRECT_FORMAT": "Please use the format: `{{EXAMPLE}}`. \n\n**Layout**: `<> = required, [] = optional`",
 	"GENERATING_IMAGE": "{{EMOJI}} Generating your image..",
+	"GENERATING_IMAGES": "{{EMOJI}} Generating your images..",
+	"GENERATING_IMAGES_LONG": "{{EMOJI}} Generating your images, this can take up to 2 minutes..",
 	"NO_REASON": "No reason given.",
 	"WAITED_TOO_LONG": "You didn't reply in time",
 	"CANCELLED": "Cancelled selection",

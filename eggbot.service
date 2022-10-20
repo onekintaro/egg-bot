@@ -1,0 +1,22 @@
+[Unit]
+Description=Eggbot Pokegang
+Documentation=https://pokegang.ch
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/node /var/www/pokegang/discord/egg-bot/
+WorkingDirectory=/var/www/pokegang/discord/egg-bot/
+RestartSec=10
+Restart=always
+
+# Output to syslog
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=nodejs-my-server-example
+
+Group=nogroup
+
+Environment=PATH=/usr/bin:/usr/local/bin
+
+[Install]
+WantedBy=multi-user.target

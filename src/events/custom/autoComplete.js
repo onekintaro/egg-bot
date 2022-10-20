@@ -2,7 +2,6 @@
 const axios = require('axios'),
 	{ parseVideo } = require('../../structures'),
 	rfc3986EncodeURIComponent = (str) => encodeURIComponent(str).replace(/[!'()*]/g, escape),
-	radioStations = require('../../assets/json/radio_streams_yuck.json'),
 	{ colourNames } = require('../../assets/json/colours.json'),
 	{ PlaylistSchema } = require('../../database/models'),
 	Event = require('../../structures/Event');
@@ -77,14 +76,6 @@ class AutoComplete extends Event {
 
 				// Send back the results to the user
 				interaction.respond(results.map(video => ({ name: video.title, value: interaction.commandName == 'play' ? video.url : video.title })));
-				break;
-			}
-			case 'radio': {
-				const input = interaction.options.getFocused(true).value,
-					stations = radioStations.map(i => i.name).filter(i => i.toLowerCase().startsWith(input.toLowerCase())).slice(0, 10);
-
-				// Send back the responses
-				interaction.respond(stations.map(i => ({ name: i, value: radioStations.find(rad => rad.name == i).audio })));
 				break;
 			}
 			case 'addrole': {

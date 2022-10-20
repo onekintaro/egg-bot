@@ -1,6 +1,6 @@
 {
   "DESCRIPTION": "Sendet ein zufälliges Meme.",
   "USAGE": "Meme",
-  "TITLE": "Aus {{SUBREDDIT}}",
+  "TITLE": "Aus /r/{{SUBREDDIT}}",
   "FOOTER": "👍 {{UPVOTES}}   👎 {{DOWNVOTES}}"
 }

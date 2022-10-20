@@ -67,15 +67,17 @@ class Meme extends Command {
 	async fetchMeme(bot, guild, settings) {
 		try {
 			const meme = await bot.reddit.fetchMeme({ removeNSFW: true });
-			if (!meme.imageURL) {
-				return this.fetchMeme(bot, guild, settings);
+			console.log(meme);
+			if (!meme.imageURL || !meme.imageURL.match(/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|png|gif|mp4)/) || meme.imageURL.match(/^(?:https?:\/\/)?(?:[^.]+\.)?youtube\.com(\/.*)?$/)) {
+				console.log('reload meme');
+				return await this.fetchMeme(bot, guild, settings);
 			} else {
 				return new Embed(bot, guild)
 					.setTitle('fun/meme:TITLE', { SUBREDDIT: meme.subreddit })
 					.setColor(16333359)
 					.setURL(meme.link)
 					.setImage(meme.imageURL)
-					.setFooter({ text: guild.translate('fun/meme:FOOTER', { UPVOTES: meme.upvotes.toLocaleString(settings.Language), DOWNVOTES: meme.downvotes.toLocaleString(settings.Language) }) });
+					.setFooter({ text: bot.translate('fun/meme:FOOTER', { UPVOTES: meme.upvotes.toLocaleString(settings.Language), DOWNVOTES: meme.downvotes.toLocaleString(settings.Language) }) });
 			}
 		} catch (err) {
 			bot.logger.error(err.message);

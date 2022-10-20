@@ -1,10 +1,11 @@
 // Dependencies
+const config = require('../config');
 const { logger } = require('../utils'),
 	chalk = require('chalk'),
 	fetch = require('node-fetch'),
 	{ Client, GatewayIntentBits: FLAGS } = require('discord.js');
 
-module.exports.run = async (config) => {
+module.exports.run = async () => {
 	// This will check if the config is correct
 	logger.log('=-=-=-=-=-=-=- Config file Verification -=-=-=-=-=-=-=');
 	logger.log('Verifying config..');

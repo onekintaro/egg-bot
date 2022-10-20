@@ -2,6 +2,7 @@
 const { Embed } = require('../../utils'),
 	varSetter = require('../../helpers/variableSetter'),
 	Event = require('../../structures/Event');
+const { EmbedBuilder } = require('discord.js');
 
 /**
  * Guild member add event
@@ -53,13 +54,45 @@ class GuildMemberAdd extends Event {
 		// Welcome plugin (give roles and message)
 		if (settings.welcomePlugin) {
 			const channel = member.guild.channels.cache.get(settings.welcomeMessageChannel);
-			if (channel) channel.send(varSetter(settings.welcomeMessageText, member, channel, member.guild)).catch(e => bot.logger.error(e.message));
+			let sendData;
+			const hash = (+new Date * Math.random()).toString(36).substring(0, 5);
+			const welcomeEmbed = new EmbedBuilder()
+				.setColor(settings.welcomeMessageEmbed.color)
+				.setTitle(settings.welcomeMessageEmbed.title.replace('{user}', member.user.username).replace('{server}', member.guild.name))
+				.setDescription(settings.welcomeMessageEmbed.description.replace('{user}', member.user).replace('{server}', member.guild.name))
+				.setThumbnail(settings.welcomeMessageEmbed.thumbnail.replace('{hash}', hash))
+				.setTimestamp();
+
+			if(!settings.welcomeMessageEmbedToggle) {
+				sendData = varSetter(settings.welcomeMessageText, member, channel, member.guild);
+			} else {
+				sendData = { embeds: [welcomeEmbed] };
+			}
+			if (channel) {
+				bot.on('guildMemberUpdate', (oldMember, newMember) => {
+					if (oldMember.pending && !newMember.pending) {
+						channel.send(sendData).catch(e => bot.logger.error(e.message));
+					}
+				});
+			}
 			// Send private message to user
-			if (settings.welcomePrivateToggle) member.send(settings.welcomePrivateText.replace('{user}', member.user).replace('{server}', member.guild.name)).catch(e => bot.logger.error(e.message));
+			if (settings.welcomePrivateToggle) {
+				bot.on('guildMemberUpdate', (oldMember, newMember) => {
+					if (oldMember.pending && !newMember.pending) {
+						member.send(settings.welcomePrivateText.replace('{user}', member.user).replace('{server}', member.guild.name)).catch(e => bot.logger.error(e.message));
+					}
+				});
+			}
 
 			// Add role to user
 			try {
-				if (settings.welcomeRoleToggle) await member.roles.add(settings.welcomeRoleGive);
+				if (settings.welcomeRoleToggle) {
+					bot.on('guildMemberUpdate', (oldMember, newMember) => {
+						if (oldMember.pending && !newMember.pending) {
+							member.roles.add(settings.welcomeRoleGive);
+						}
+					});
+				}
 			} catch (err) {
 				console.log(settings.welcomeRoleGive);
 				bot.logger.error(`Event: '${this.conf.name}' has error: ${err.message}.`);

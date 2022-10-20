@@ -1,4 +1,4 @@
 {
-  "DESCRIPTION": "Erhalte Informationen über ein Pokémon anhand seiner Nummer im National Dex.",
+  "DESCRIPTION": "Erhalte Informationen über ein Pokémon anhand seiner Nummer im National Dex oder dem Namen.",
   "USAGE": "Pokemon <pokemonNr>"
 }
